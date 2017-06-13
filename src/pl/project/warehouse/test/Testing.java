@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import pl.project.warehouse.entities.Client;
+//import pl.project.warehouse.entities.Client;
 
 public class Testing {
 	public static void main(String[] args) {
-		EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("warehouse");
+		/*EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("warehouse");
 		EntityManager manager = managerFactory.createEntityManager(); 
 		manager.getTransaction().begin();
 		
@@ -20,7 +20,7 @@ public class Testing {
 		
 		manager.getTransaction().commit();
 		manager.close();
-		managerFactory.close();
+		managerFactory.close();*/
 		
 	}
 }
