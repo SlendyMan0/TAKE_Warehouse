@@ -37,17 +37,19 @@ public class XOrderREST implements XOrderInterface {
 	@GET
 	@Path("/find/{ido}")
 	public XOrder find(@PathParam("ido") int ido) {
-		XOrder order = bean.find(ido);
+		XOrder order = (XOrder) bean.find(ido);
 		return order;
 	}
 	
 	@Override
 	@GET
 	@Path("/get")
+	@SuppressWarnings("unchecked")
 	public List<XOrder> get() {
-		List<XOrder> lxorder = new ArrayList<XOrder>();
-		lxorder = bean.get();
-		return lxorder;
+		List<XOrder> lorder = new ArrayList<XOrder>();
+		String name = this.getClass().getSimpleName();
+		lorder = (List<XOrder>)(Object) bean.get(name.substring(0, name.length() - 4));
+		return lorder;
 	}
 
 	@Override

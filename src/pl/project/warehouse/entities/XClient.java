@@ -11,19 +11,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class XClient implements Serializable{
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+
 	int id;
 	String name;
 	String surname;
 	String companyName;
-	//@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
-	//List<Order> orders = new ArrayList<Order>();
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+	List<XOrder> xorders = new ArrayList<XOrder>();
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@XmlAttribute
 	public int getId() {
 		return id;
 	}
@@ -48,10 +53,10 @@ public class XClient implements Serializable{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-//	public List<Order> getOrders() {
-//		return orders;
-//	}
-//	public void setOrders(List<Order> orders) {
-//		this.orders = orders;
-//	}
+	public List<XOrder> getXOrders() {
+		return xorders;
+	}
+	public void setXOrders(List<XOrder> orders) {
+		this.xorders = orders;
+	}
 }

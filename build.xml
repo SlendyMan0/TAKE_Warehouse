@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="TAKE_Warehouse" default="deploy">
+<project name="warehouse" default="deploy">
 	<property name="jboss.home" value="D:\Projekty\TEJK\take\wildfly-10.1.0.Final" />
 
 	<path id="compile.classpath">

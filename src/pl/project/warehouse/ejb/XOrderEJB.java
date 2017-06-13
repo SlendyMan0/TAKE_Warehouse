@@ -7,37 +7,39 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import pl.project.warehouse.entities.XOrder;
-
 @Stateless
 public class XOrderEJB {
 
 	@PersistenceContext(name="warehouse")
 	EntityManager manager;
 	
-	public void create(XOrder xorder) {
-		manager.persist(xorder);
+	public void create(Object obj) {
+		manager.persist(obj);
 	}
 
 	public void delete(int id) {
-		XOrder xorder = manager.find(XOrder.class, id);
-		manager.remove(xorder);
+		Object obj = manager.find(Object.class, id);
+		manager.remove(obj);
 	}
 
 
-	public XOrder find(int id) {
-		XOrder xorder = manager.find(XOrder.class, id);
-		return xorder;
+	public Object find(int id) {
+		Object obj = manager.find(Object.class, id);
+		return obj;
 	}
 
-	public List<XOrder> get() {
-		Query q = manager.createQuery("select c from XOrder c");
+	public List<Object> get(String name) {
+		String query = "select c from ";
+		query += name;
+		query += " c";
+		
+		Query q = manager.createQuery(query);
 		@SuppressWarnings("unchecked")
-		List<XOrder> list = q.getResultList();
+		List<Object> list = q.getResultList();
 		return list;
 	}
 
-	public void update(XOrder xorder) {
-		xorder = manager.merge(xorder);
+	public void update(Object obj) {
+		obj = manager.merge(obj);
 	}
 }
