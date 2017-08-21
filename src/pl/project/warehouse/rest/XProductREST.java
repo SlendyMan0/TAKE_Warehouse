@@ -1,4 +1,4 @@
-/*package pl.project.warehouse.rest;
+package pl.project.warehouse.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import pl.project.warehouse.ejb.WarehouseEJB;
+import pl.project.warehouse.ejb.XProductEJB;
 import pl.project.warehouse.entities.XProduct;
 import pl.project.warehouse.interfaces.XProductInterface;
 
@@ -23,7 +23,7 @@ import pl.project.warehouse.interfaces.XProductInterface;
 public class XProductREST implements XProductInterface{
 
 	@EJB
-	WarehouseEJB bean;
+	XProductEJB bean;
 	
 	@Override
 	@POST
@@ -72,4 +72,4 @@ public class XProductREST implements XProductInterface{
 	public void delete(@PathParam("idp") int idp) {
 		bean.delete(idp);
 	}
-}*/
+}

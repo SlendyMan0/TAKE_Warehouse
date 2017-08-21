@@ -1,4 +1,4 @@
-/*package pl.project.warehouse.rest;
+package pl.project.warehouse.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import pl.project.warehouse.ejb.WarehouseEJB;
+import pl.project.warehouse.ejb.XDepotEJB;
 import pl.project.warehouse.entities.XDepot;
 import pl.project.warehouse.interfaces.XDepotInterface;
 
@@ -23,7 +23,7 @@ import pl.project.warehouse.interfaces.XDepotInterface;
 public class XDepotREST implements XDepotInterface {
 	
 	@EJB
-	WarehouseEJB bean;
+	XDepotEJB bean;
 	
 	@Override
 	@POST
@@ -73,4 +73,4 @@ public class XDepotREST implements XDepotInterface {
 		bean.delete(idd);
 	}
 
-}*/
+}

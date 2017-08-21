@@ -1,4 +1,4 @@
-/*package pl.project.warehouse.rest;
+package pl.project.warehouse.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import pl.project.warehouse.ejb.WarehouseEJB;
-import pl.project.warehouse.entities.XClient;
-import pl.project.warehouse.entities.XProduct;
+import pl.project.warehouse.ejb.XProductLexiconEJB;
 import pl.project.warehouse.entities.XProductLexicon;
 import pl.project.warehouse.interfaces.XProductLexiconInterface;
 
@@ -24,7 +22,7 @@ import pl.project.warehouse.interfaces.XProductLexiconInterface;
 public class XProductLexiconREST implements XProductLexiconInterface {
 
 	@EJB
-	WarehouseEJB bean;
+	XProductLexiconEJB bean;
 
 	@Override
 	@POST
@@ -74,4 +72,4 @@ public class XProductLexiconREST implements XProductLexiconInterface {
 		bean.delete(idl);
 	}
 
-}*/
+}
