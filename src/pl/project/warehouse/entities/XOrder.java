@@ -13,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
@@ -23,7 +25,7 @@ public class XOrder implements Serializable {
 	int ido;
 	int totalCost;
 	//List<XProduct> products = new ArrayList<XProduct>();
-	//XClient client;
+	XClient client;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
@@ -46,14 +48,15 @@ public class XOrder implements Serializable {
 	}
 	public void setProducts(List<XProduct> products) {
 		this.products = products;
-	}
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	}*/
+	@ManyToOne(targetEntity=XClient.class, cascade=CascadeType.REMOVE,fetch=FetchType.LAZY)
+	@XmlIDREF
 	public XClient getClient() {
 		return client;
 	}
 	public void setClient(XClient client) {
 		this.client = client;
-	}*/
+	}
 	
 	
 }

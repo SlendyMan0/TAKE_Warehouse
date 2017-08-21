@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -23,11 +24,12 @@ public class XClient implements Serializable{
 	String name;
 	String surname;
 	String companyName;
-	//List<XOrder> xorders = new ArrayList<XOrder>();
+	List<XOrder> xorders = new ArrayList<XOrder>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@XmlAttribute
+	@XmlID
 	public int getIdc() {
 		return idc;
 	}
@@ -52,11 +54,11 @@ public class XClient implements Serializable{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	/*@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=false)
+	@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
 	public List<XOrder> getXOrders() {
 		return xorders;
 	}
 	public void setXOrders(List<XOrder> orders) {
 		this.xorders = orders;
-	}*/
+	}
 }
