@@ -11,24 +11,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class XDepot implements Serializable{
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	int id;
+
+	int idd;
 	String adress;
 	int spaceAvalible;
 	int spaceTaken;
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
-	List<XProductLexicon> productList = new ArrayList<XProductLexicon>();
+	//List<XProductLexicon> productList = new ArrayList<XProductLexicon>();
 	
-	public int getId() {
-		return id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@XmlAttribute
+	public int getIdd() {
+		return idd;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdd(int idd) {
+		this.idd = idd;
 	}
 	public String getAdress() {
 		return adress;
@@ -48,12 +52,13 @@ public class XDepot implements Serializable{
 	public void setSpaceTaken(int spaceTaken) {
 		this.spaceTaken = spaceTaken;
 	}
+	/*@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
 	public List<XProductLexicon> getProductList() {
 		return productList;
 	}
 	public void setProductList(List<XProductLexicon> productList) {
 		this.productList = productList;
-	}
+	}*/
 	
 	
 }

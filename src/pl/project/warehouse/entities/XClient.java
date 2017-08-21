@@ -19,21 +19,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class XClient implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	int id;
+	int idc;
 	String name;
 	String surname;
 	String companyName;
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
-	List<XOrder> xorders = new ArrayList<XOrder>();
+	//List<XOrder> xorders = new ArrayList<XOrder>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@XmlAttribute
-	public int getId() {
-		return id;
+	public int getIdc() {
+		return idc;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdc(int idc) {
+		this.idc = idc;
 	}
 	public String getName() {
 		return name;
@@ -53,10 +52,11 @@ public class XClient implements Serializable{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+	/*@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=false)
 	public List<XOrder> getXOrders() {
 		return xorders;
 	}
 	public void setXOrders(List<XOrder> orders) {
 		this.xorders = orders;
-	}
+	}*/
 }

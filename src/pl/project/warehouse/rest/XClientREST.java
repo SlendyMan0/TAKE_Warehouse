@@ -1,4 +1,4 @@
-package pl.project.warehouse.rest;
+/*package pl.project.warehouse.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import pl.project.warehouse.ejb.XOrderEJB;
+import pl.project.warehouse.ejb.WarehouseEJB;
 import pl.project.warehouse.entities.XClient;
 import pl.project.warehouse.interfaces.XClientInterface;
 
@@ -23,7 +23,7 @@ import pl.project.warehouse.interfaces.XClientInterface;
 public class XClientREST implements XClientInterface {
 
 	@EJB
-	XOrderEJB bean;
+	WarehouseEJB bean;
 	
 	@Override
 	@POST
@@ -46,11 +46,11 @@ public class XClientREST implements XClientInterface {
 	@Path("/get")
 	@SuppressWarnings("unchecked")
 	public List<XClient> get() {
-		List<XClient> lclient = new ArrayList<XClient>();
-		String name = this.getClass().getSimpleName();
-		System.out.println(name);
-		lclient = (List<XClient>)(Object) bean.get(name.substring(0, name.length() - 4));
-		return lclient;
+		List<XClient> lclient = bean.getXClients();
+		List<XClient> xclients = new ArrayList<XClient>();	
+		xclients = lclient;
+
+		return xclients;
 	}
 
 	@Override
@@ -72,4 +72,4 @@ public class XClientREST implements XClientInterface {
 	public void delete(@PathParam("idc") int idc) {
 		bean.delete(idc);
 	}
-}
+}*/

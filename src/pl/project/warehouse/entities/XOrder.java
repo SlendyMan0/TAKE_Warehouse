@@ -22,10 +22,8 @@ public class XOrder implements Serializable {
 	
 	int ido;
 	int totalCost;
-	/*@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
-	List<XProduct> products = new ArrayList<XProduct>();*/
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
-	XClient client;
+	//List<XProduct> products = new ArrayList<XProduct>();
+	//XClient client;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
@@ -42,18 +40,20 @@ public class XOrder implements Serializable {
 	public void setTotalCost(int totalCost) {
 		this.totalCost = totalCost;
 	}
-	/*public List<XProduct> getProducts() {
+	/*@OneToMany(targetEntity=XProduct.class, mappedBy="xorder", cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+	public List<XProduct> getProducts() {
 		return products;
 	}
 	public void setProducts(List<XProduct> products) {
 		this.products = products;
-	}*/
+	}
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	public XClient getClient() {
 		return client;
 	}
 	public void setClient(XClient client) {
 		this.client = client;
-	}
+	}*/
 	
 	
 }

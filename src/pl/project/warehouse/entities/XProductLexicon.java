@@ -5,22 +5,27 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GenerationType;
 
 @Entity
+@XmlRootElement
 public class XProductLexicon implements Serializable{
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	int id;
+	
+	int idl;
 	String name;
 	String description;
 	
-	public int getId() {
-		return id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@XmlAttribute
+	public int getIdl() {
+		return idl;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdl(int idl) {
+		this.idl = idl;
 	}
 	public String getName() {
 		return name;

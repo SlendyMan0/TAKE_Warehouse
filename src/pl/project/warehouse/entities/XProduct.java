@@ -9,23 +9,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class XProduct implements Serializable{
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
-	int id;
+
+	int idp;
 	int amount;
 	int cost;
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=false)
-	XProductLexicon type;
+	//XProductLexicon type;
+	//XOrder xorder;
 	
-	public int getId() {
-		return id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@XmlAttribute
+	public int getIdp() {
+		return idp;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdp(int idp) {
+		this.idp = idp;
 	}
 	public int getAmount() {
 		return amount;
@@ -39,12 +44,13 @@ public class XProduct implements Serializable{
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	public XProductLexicon getType() {
-		return type;
-	}
-	public void setType(XProductLexicon type) {
-		this.type = type;
-	}
+	//@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=false)
+//	public XProductLexicon getType() {
+//		return type;
+//	}
+//	public void setType(XProductLexicon type) {
+//		this.type = type;
+//	}
 	
 	
 }
