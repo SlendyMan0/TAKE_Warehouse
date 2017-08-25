@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
@@ -23,7 +24,7 @@ public class XDepot implements Serializable{
 	String adress;
 	int spaceAvalible;
 	int spaceTaken;
-	//List<XProductLexicon> productList = new ArrayList<XProductLexicon>();
+	List<XProductLexicon> productList = new ArrayList<XProductLexicon>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
@@ -52,13 +53,14 @@ public class XDepot implements Serializable{
 	public void setSpaceTaken(int spaceTaken) {
 		this.spaceTaken = spaceTaken;
 	}
-	/*@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+	@XmlTransient
 	public List<XProductLexicon> getProductList() {
 		return productList;
 	}
 	public void setProductList(List<XProductLexicon> productList) {
 		this.productList = productList;
-	}*/
+	}
 	
 	
 }

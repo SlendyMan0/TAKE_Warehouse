@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -24,7 +25,7 @@ public class XOrder implements Serializable {
 	
 	int ido;
 	int totalCost;
-	//List<XProduct> products = new ArrayList<XProduct>();
+	List<XProduct> products = new ArrayList<XProduct>();
 	XClient client;
 	
 	@Id
@@ -42,15 +43,16 @@ public class XOrder implements Serializable {
 	public void setTotalCost(int totalCost) {
 		this.totalCost = totalCost;
 	}
-	/*@OneToMany(targetEntity=XProduct.class, mappedBy="xorder", cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+	@OneToMany(targetEntity=XProduct.class, mappedBy="xorder", cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+	@XmlTransient
 	public List<XProduct> getProducts() {
 		return products;
 	}
 	public void setProducts(List<XProduct> products) {
 		this.products = products;
-	}*/
-	@ManyToOne(targetEntity=XClient.class, cascade=CascadeType.REMOVE,fetch=FetchType.LAZY)
-	@XmlIDREF
+	}
+	@ManyToOne(targetEntity=XClient.class, cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@XmlTransient
 	public XClient getClient() {
 		return client;
 	}
@@ -58,5 +60,8 @@ public class XOrder implements Serializable {
 		this.client = client;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getIdo()+" "+getTotalCost();
+	}
 }

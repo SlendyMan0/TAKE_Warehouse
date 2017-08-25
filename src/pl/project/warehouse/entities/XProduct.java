@@ -8,9 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
@@ -20,8 +21,8 @@ public class XProduct implements Serializable{
 	int idp;
 	int amount;
 	int cost;
-	//XProductLexicon type;
-	//XOrder xorder;
+	XProductLexicon type;
+	XOrder xorder;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
@@ -44,13 +45,21 @@ public class XProduct implements Serializable{
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	//@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=false)
-//	public XProductLexicon getType() {
-//		return type;
-//	}
-//	public void setType(XProductLexicon type) {
-//		this.type = type;
-//	}
+	@ManyToOne(targetEntity=XProductLexicon.class,cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@XmlTransient
+	public XProductLexicon getType() {
+		return type;
+	}
+	public void setType(XProductLexicon type) {
+		this.type = type;
+	}
+	@ManyToOne(targetEntity=XOrder.class,cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	public XOrder getXorder() {
+		return xorder;
+	}
+	public void setXorder(XOrder xorder) {
+		this.xorder = xorder;
+	}
 	
 	
 }

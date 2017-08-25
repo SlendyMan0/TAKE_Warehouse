@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @XmlRootElement
@@ -29,7 +30,6 @@ public class XClient implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@XmlAttribute
-	@XmlID
 	public int getIdc() {
 		return idc;
 	}
@@ -54,7 +54,8 @@ public class XClient implements Serializable{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
+	@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=false)
+	@XmlTransient
 	public List<XOrder> getXOrders() {
 		return xorders;
 	}
