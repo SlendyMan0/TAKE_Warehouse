@@ -34,7 +34,7 @@ public class XMLWriting {
 		
 		serverUrl= "http://localhost:8080/warehouse/order";
 		url= serverUrl+"/create";
-		message = "<xOrder ido=\"0\"><totalCost>123</totalCost><client>1</client></xOrder>";
+		message = "<xOrder ido=\"0\"><totalCost>123</totalCost><client idc=\"1\"></client></xOrder>";
 		txt = HttpHelper.doPost(url,message,"application/xml");
 		System.out.println(txt);
 		

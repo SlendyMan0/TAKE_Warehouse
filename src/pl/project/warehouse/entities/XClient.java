@@ -55,7 +55,7 @@ public class XClient implements Serializable{
 		this.companyName = companyName;
 	}
 	@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=false)
-	@XmlTransient
+	//@XmlTransient
 	public List<XOrder> getXOrders() {
 		return xorders;
 	}

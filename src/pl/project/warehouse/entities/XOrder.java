@@ -51,8 +51,8 @@ public class XOrder implements Serializable {
 	public void setProducts(List<XProduct> products) {
 		this.products = products;
 	}
-	@ManyToOne(targetEntity=XClient.class, cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@XmlTransient
+	@ManyToOne(targetEntity=XClient.class, fetch=FetchType.EAGER)
+	//@XmlTransient
 	public XClient getClient() {
 		return client;
 	}

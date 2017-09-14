@@ -29,6 +29,9 @@ public class XOrderREST implements XOrderInterface {
 	@POST
 	@Path("/create")
 	public String add(XOrder order) {
+		
+		System.out.println(order.getIdo()+" "+order.getTotalCost()+" "+order.getClient().getIdc());
+		
 		bean.create(order);
 		return "Order created.\n";
 	}
