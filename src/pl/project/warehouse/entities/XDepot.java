@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -24,10 +25,11 @@ public class XDepot implements Serializable{
 	String adress;
 	int spaceAvalible;
 	int spaceTaken;
-	List<XProductLexicon> productList = new ArrayList<XProductLexicon>();
+	//List<XProductLexicon> productList = new ArrayList<XProductLexicon>();
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DEPO_SEQ_GEN")
+	@SequenceGenerator(name="DEPO_SEQ_GEN", sequenceName="DEPO_SEQ", allocationSize=1)
 	@XmlAttribute
 	public int getIdd() {
 		return idd;
@@ -53,14 +55,14 @@ public class XDepot implements Serializable{
 	public void setSpaceTaken(int spaceTaken) {
 		this.spaceTaken = spaceTaken;
 	}
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
-	@XmlTransient
-	public List<XProductLexicon> getProductList() {
-		return productList;
-	}
-	public void setProductList(List<XProductLexicon> productList) {
-		this.productList = productList;
-	}
+//	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
+//	@XmlTransient
+//	public List<XProductLexicon> getProductList() {
+//		return productList;
+//	}
+//	public void setProductList(List<XProductLexicon> productList) {
+//		this.productList = productList;
+//	}
 	
 	
 }

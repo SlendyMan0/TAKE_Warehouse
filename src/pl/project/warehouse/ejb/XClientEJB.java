@@ -28,7 +28,7 @@ public class XClientEJB {
 
 	public XClient find(int id) {
 		XClient obj = manager.find(XClient.class, id);
-		for(XOrder o:obj.getXOrders()) System.out.println(o.getIdo());
+		//for(XOrder o:obj.getXOrders()) System.out.println(o.getIdo());
 		return obj;
 	}
 	
@@ -36,7 +36,11 @@ public class XClientEJB {
 		Query q = manager.createQuery("select c from XClient c");
 		@SuppressWarnings("unchecked")
 		List<XClient> list = q.getResultList();
-		for(XClient obj:list) for(XOrder o:obj.getXOrders()) System.out.println(obj.getCompanyName()+" > "+o.getIdo());
+		//for(XClient obj:list) {
+		//	for(XOrder o:obj.getXOrders()) {
+		//		System.out.println(obj.getCompanyName()+" > "+o.getIdo());
+		//	}
+		//}
 
 		return list;
 	}

@@ -16,6 +16,8 @@ public interface XOrderInterface {
 	
 	public abstract List<XOrder> get();
 	
+	public abstract List<XOrder> findByClient(@PathParam("idc") int idc);
+	
 	public abstract String update(XOrder order);
 	
 	public abstract void delete(@PathParam("ido") int ido);

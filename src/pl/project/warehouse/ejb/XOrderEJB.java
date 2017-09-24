@@ -34,10 +34,20 @@ public class XOrderEJB {
 		Query q = manager.createQuery("select c from XOrder c");
 		@SuppressWarnings("unchecked")
 		List<XOrder> list = q.getResultList();
+		
 		return list;
 	}
 	
 	public void update(XOrder obj) {
 		obj = manager.merge(obj);
+	}
+	
+	public List<XOrder> findByClient(int idc) {
+		Query q = manager.createQuery("select c from XOrder c where c.client.idc like :idc");
+		q.setParameter("idc", idc);
+		@SuppressWarnings("unchecked")
+		List<XOrder> list = q.getResultList();
+		
+		return list;
 	}
 }

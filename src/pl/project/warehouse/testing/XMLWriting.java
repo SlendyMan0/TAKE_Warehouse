@@ -22,14 +22,6 @@ public class XMLWriting {
 		txt = HttpHelper.doPost(url,message,"application/xml");
 		System.out.println(txt);
 		
-		//depot
-		
-		serverUrl= "http://localhost:8080/warehouse/depot";
-		url= serverUrl+"/create";
-		message = "<xDepot idd=\"0\"><adress>Jasna</adress><spaceAvalible>12</spaceAvalible><spaceTaken>30</spaceTaken></xDepot>";
-		txt = HttpHelper.doPost(url,message,"application/xml");
-		System.out.println(txt);
-		
 		//order
 		
 		serverUrl= "http://localhost:8080/warehouse/order";
@@ -38,11 +30,11 @@ public class XMLWriting {
 		txt = HttpHelper.doPost(url,message,"application/xml");
 		System.out.println(txt);
 		
-		//product
+		//depot
 		
-		serverUrl= "http://localhost:8080/warehouse/product";
+		serverUrl= "http://localhost:8080/warehouse/depot";
 		url= serverUrl+"/create";
-		message = "<xProduct idp=\"0\"><amount>3</amount><cost>9</cost></xProduct>";
+		message = "<xDepot idd=\"0\"><adress>Jasna</adress><spaceAvalible>12</spaceAvalible><spaceTaken>30</spaceTaken></xDepot>";
 		txt = HttpHelper.doPost(url,message,"application/xml");
 		System.out.println(txt);
 
@@ -51,6 +43,14 @@ public class XMLWriting {
 		serverUrl= "http://localhost:8080/warehouse/lexicon";
 		url= serverUrl+"/create";
 		message = "<xProductLexicon idl=\"0\"><name>Kurz</name><description>Tego zawsze du¿o.</description></xProductLexicon>";
+		txt = HttpHelper.doPost(url,message,"application/xml");
+		System.out.println(txt);
+		
+		//product
+		
+		serverUrl= "http://localhost:8080/warehouse/product";
+		url= serverUrl+"/create";
+		message = "<xProduct idp=\"0\"><amount>3</amount><cost>9</cost><type idl=\"1\"></type><xorder ido=\"1\"></xorder><xdepot idd=\"1\"></xdepot></xProduct>";
 		txt = HttpHelper.doPost(url,message,"application/xml");
 		System.out.println(txt);
 		

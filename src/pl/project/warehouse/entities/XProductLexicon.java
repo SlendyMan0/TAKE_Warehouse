@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GenerationType;
@@ -19,7 +20,8 @@ public class XProductLexicon implements Serializable{
 	String description;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LEX_SEQ_GEN")
+	@SequenceGenerator(name="LEX_SEQ_GEN", sequenceName="LEX_SEQ", allocationSize=1)
 	@XmlAttribute
 	public int getIdl() {
 		return idl;

@@ -11,8 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -25,10 +25,11 @@ public class XClient implements Serializable{
 	String name;
 	String surname;
 	String companyName;
-	List<XOrder> xorders = new ArrayList<XOrder>();
+	//List<XOrder> xorders = new ArrayList<XOrder>();
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CLI_SEQ_GEN")
+	@SequenceGenerator(name="CLI_SEQ_GEN", sequenceName="CLI_SEQ", allocationSize=1)
 	@XmlAttribute
 	public int getIdc() {
 		return idc;
@@ -54,12 +55,12 @@ public class XClient implements Serializable{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=false)
-	//@XmlTransient
-	public List<XOrder> getXOrders() {
-		return xorders;
-	}
-	public void setXOrders(List<XOrder> orders) {
-		this.xorders = orders;
-	}
+//	@OneToMany(targetEntity=XOrder.class, mappedBy="client", cascade=CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=false)
+//	@XmlTransient
+//	public List<XOrder> getXOrders() {
+//		return xorders;
+//	}
+//	public void setXOrders(List<XOrder> orders) {
+//		this.xorders = orders;
+//	}
 }

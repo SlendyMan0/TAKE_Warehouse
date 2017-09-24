@@ -29,9 +29,6 @@ public class XOrderREST implements XOrderInterface {
 	@POST
 	@Path("/create")
 	public String add(XOrder order) {
-		
-		System.out.println(order.getIdo()+" "+order.getTotalCost()+" "+order.getClient().getIdc());
-		
 		bean.create(order);
 		return "Order created.\n";
 	}
@@ -49,6 +46,17 @@ public class XOrderREST implements XOrderInterface {
 	@Path("/get")
 	public List<XOrder> get() {
 		List<XOrder> lorder = bean.getXOrders();
+		List<XOrder> xorders = new ArrayList<XOrder>();	
+		xorders = lorder;
+
+		return xorders;
+	}
+	
+	@Override
+	@GET
+	@Path("/client/{idc}")
+	public List<XOrder> findByClient(@PathParam("idc") int idc) {
+		List<XOrder> lorder = bean.findByClient(idc);
 		List<XOrder> xorders = new ArrayList<XOrder>();	
 		xorders = lorder;
 
