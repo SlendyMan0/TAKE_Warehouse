@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import pl.project.warehouse.entities.XClient;
-import pl.project.warehouse.entities.XOrder;
 
 @Stateless
 public class XClientEJB {

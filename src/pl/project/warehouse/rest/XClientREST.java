@@ -1,6 +1,5 @@
 package pl.project.warehouse.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import pl.project.warehouse.containers.Clients;
 import pl.project.warehouse.ejb.XClientEJB;
 import pl.project.warehouse.entities.XClient;
 import pl.project.warehouse.interfaces.XClientInterface;
@@ -44,13 +44,11 @@ public class XClientREST implements XClientInterface {
 	@Override
 	@GET
 	@Path("/get")
-	@SuppressWarnings("unchecked")
-	public List<XClient> get() {
+	public Clients get() {
 		List<XClient> lclient = bean.getXClients();
-		List<XClient> xclients = new ArrayList<XClient>();	
-		xclients = lclient;
+		Clients clients = new Clients(lclient);	
 
-		return xclients;
+		return clients;
 	}
 
 	@Override

@@ -1,10 +1,9 @@
 package pl.project.warehouse.interfaces;
 
-import java.util.List;
-
 import javax.ejb.Local;
 import javax.ws.rs.PathParam;
 
+import pl.project.warehouse.containers.Depots;
 import pl.project.warehouse.entities.XDepot;
 
 @Local
@@ -14,7 +13,7 @@ public interface XDepotInterface {
 	
 	public abstract XDepot find(@PathParam("idd") int idd);
 	
-	public abstract List<XDepot> get();
+	public abstract Depots get();
 	
 	public abstract String update(XDepot depot);
 	

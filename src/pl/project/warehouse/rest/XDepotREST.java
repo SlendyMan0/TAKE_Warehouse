@@ -1,6 +1,5 @@
 package pl.project.warehouse.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import pl.project.warehouse.containers.Depots;
 import pl.project.warehouse.ejb.XDepotEJB;
 import pl.project.warehouse.entities.XDepot;
 import pl.project.warehouse.interfaces.XDepotInterface;
@@ -44,13 +44,11 @@ public class XDepotREST implements XDepotInterface {
 	@Override
 	@GET
 	@Path("/get")
-	@SuppressWarnings("unchecked")
-	public List<XDepot> get() {
+	public Depots get() {
 		List<XDepot> ldepot = bean.getXDepots();
-		List<XDepot> xdepots = new ArrayList<XDepot>();	
-		xdepots = ldepot;
+		Depots depots = new Depots(ldepot);	
 
-		return xdepots;
+		return depots;
 	}
 
 	@Override

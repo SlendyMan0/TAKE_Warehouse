@@ -40,4 +40,28 @@ public class XProductEJB {
 	public void update(XProduct obj) {
 		obj = manager.merge(obj);
 	}
+	
+	public List<XProduct> findByType(int idl) {
+		Query q = manager.createQuery("select c from XProduct c where c.type.idl like :idl");
+		q.setParameter("idl", idl);
+		@SuppressWarnings("unchecked")
+		List<XProduct> list = q.getResultList();
+		return list;
+	}
+	
+	public List<XProduct> findByDepot(int idd) {
+		Query q = manager.createQuery("select c from XProduct c where c.xdepot.idd like :idd");
+		q.setParameter("idd", idd);
+		@SuppressWarnings("unchecked")
+		List<XProduct> list = q.getResultList();
+		return list;
+	}
+	
+	public List<XProduct> findByOrder(int ido) {
+		Query q = manager.createQuery("select c from XProduct c where c.xorder.ido like :ido");
+		q.setParameter("ido", ido);
+		@SuppressWarnings("unchecked")
+		List<XProduct> list = q.getResultList();
+		return list;
+	}
 }

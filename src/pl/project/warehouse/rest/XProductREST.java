@@ -1,6 +1,5 @@
 package pl.project.warehouse.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import pl.project.warehouse.containers.Products;
 import pl.project.warehouse.ejb.XProductEJB;
 import pl.project.warehouse.entities.XProduct;
 import pl.project.warehouse.interfaces.XProductInterface;
@@ -44,13 +44,11 @@ public class XProductREST implements XProductInterface{
 	@Override
 	@GET
 	@Path("/get")
-	@SuppressWarnings("unchecked")
-	public List<XProduct> get() {
+	public Products get() {
 		List<XProduct> lproduct = bean.getXProducts();
-		List<XProduct> xproducts = new ArrayList<XProduct>();	
-		xproducts = lproduct;
+		Products products = new Products(lproduct);
 
-		return xproducts;
+		return products;
 	}
 
 	@Override
@@ -71,5 +69,35 @@ public class XProductREST implements XProductInterface{
 	@Path("/delete/{idp}")
 	public void delete(@PathParam("idp") int idp) {
 		bean.delete(idp);
+	}
+	
+	@Override
+	@GET
+	@Path("/find/lexicon/{idt}")
+	public Products findByType(@PathParam("idt") int idt) {
+		List<XProduct> lproduct = bean.findByType(idt);
+		Products products = new Products(lproduct);
+
+		return products;
+	}
+	
+	@Override
+	@GET
+	@Path("/find/depot/{idd}")
+	public Products findByDepot(@PathParam("idd") int idd) {
+		List<XProduct> lproduct = bean.findByDepot(idd);
+		Products products = new Products(lproduct);
+
+		return products;
+	}
+	
+	@Override
+	@GET
+	@Path("/find/order/{ido}")
+	public Products findByOrder(@PathParam("ido") int ido) {
+		List<XProduct> lproduct = bean.findByOrder(ido);
+		Products products = new Products(lproduct);
+
+		return products;
 	}
 }

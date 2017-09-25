@@ -1,10 +1,9 @@
 package pl.project.warehouse.interfaces;
 
-import java.util.List;
-
 import javax.ejb.Local;
 import javax.ws.rs.PathParam;
 
+import pl.project.warehouse.containers.Clients;
 import pl.project.warehouse.entities.XClient;
 
 @Local
@@ -14,7 +13,7 @@ public interface XClientInterface {
 	
 	public abstract XClient find(@PathParam("idc") int idc);
 	
-	public abstract List<XClient> get();
+	public abstract Clients get();
 	
 	public abstract String update(XClient client);
 	

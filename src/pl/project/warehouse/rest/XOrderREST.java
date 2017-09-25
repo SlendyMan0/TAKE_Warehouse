@@ -1,6 +1,5 @@
 package pl.project.warehouse.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import pl.project.warehouse.containers.Orders;
 import pl.project.warehouse.ejb.XOrderEJB;
 import pl.project.warehouse.entities.XOrder;
 import pl.project.warehouse.interfaces.XOrderInterface;
@@ -44,23 +44,21 @@ public class XOrderREST implements XOrderInterface {
 	@Override
 	@GET
 	@Path("/get")
-	public List<XOrder> get() {
+	public Orders get() {
 		List<XOrder> lorder = bean.getXOrders();
-		List<XOrder> xorders = new ArrayList<XOrder>();	
-		xorders = lorder;
+		Orders orders = new Orders(lorder);
 
-		return xorders;
+		return orders;
 	}
 	
 	@Override
 	@GET
-	@Path("/client/{idc}")
-	public List<XOrder> findByClient(@PathParam("idc") int idc) {
+	@Path("/find/client/{idc}")
+	public Orders findByClient(@PathParam("idc") int idc) {
 		List<XOrder> lorder = bean.findByClient(idc);
-		List<XOrder> xorders = new ArrayList<XOrder>();	
-		xorders = lorder;
+		Orders orders = new Orders(lorder);
 
-		return xorders;
+		return orders;
 	}
 
 	@Override

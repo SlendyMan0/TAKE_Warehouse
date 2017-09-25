@@ -1,6 +1,5 @@
 package pl.project.warehouse.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import pl.project.warehouse.containers.ProductLexicons;
 import pl.project.warehouse.ejb.XProductLexiconEJB;
 import pl.project.warehouse.entities.XProductLexicon;
 import pl.project.warehouse.interfaces.XProductLexiconInterface;
@@ -43,13 +43,11 @@ public class XProductLexiconREST implements XProductLexiconInterface {
 	@Override
 	@GET
 	@Path("/get")
-	@SuppressWarnings("unchecked")
-	public List<XProductLexicon> get() {
+	public ProductLexicons get() {
 		List<XProductLexicon> llexicon = bean.getXProductLexicons();
-		List<XProductLexicon> xlexicons = new ArrayList<XProductLexicon>();	
-		xlexicons = llexicon;
+		ProductLexicons lexicons = new ProductLexicons(llexicon);
 
-		return xlexicons;
+		return lexicons;
 	}
 
 	@Override
